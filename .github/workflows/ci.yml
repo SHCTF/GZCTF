@@ -72,9 +72,9 @@ jobs:
       - name: Login to BaseCTF Private Registry
         uses: docker/login-action@v3
         with:
-          registry: docker-registry.basectf.fun
-          username: ${{ secrets.BASECTF_REGISTRY_USERNAME }}
-          password: ${{ secrets.BASECTF_REGISTRY_PASSWORD }}
+          registry: ${{ secrets.SHCTF_REGISTRY }}
+          username: ${{ secrets.SHCTF_REGISTRY_USERNAME }}
+          password: ${{ secrets.SHCTF_REGISTRY_PASSWORD }}
 
       - name: Docker metadata action
         uses: docker/metadata-action@v5
@@ -82,7 +82,7 @@ jobs:
         with:
           images: |
             ghcr.io/${{ github.repository }}/gzctf
-            docker-registry.basectf.fun/gzctf
+            ${{ secrets.SHCTF_REGISTRY }}/gzctf
           flavor: |
             latest=${{ env.RELEASE }}
           tags: |
